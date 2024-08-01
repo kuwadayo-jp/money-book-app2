@@ -19,7 +19,7 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,//ここ変更
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
