@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-
+        <h1>Vite + React ({import.meta.env.MODE})</h1>
     </>
   )
 }
