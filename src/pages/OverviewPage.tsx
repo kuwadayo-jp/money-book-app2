@@ -5,7 +5,7 @@ import { AuthContextConsumer } from "../contexts/Authcontext";
 const OverviewPage = () => {
   const context = AuthContextConsumer();
   let text = "loginしてください";
-  let dn = context.loginUser?.displayName;
+  const dn = context.loginUser?.displayName;
   if (typeof dn === "string") {
     text = dn;
   }
