@@ -6,13 +6,13 @@ const SIDEBAR_ITEMS = [
   {
     name: "ホーム",
     icon: House,
-    color: "#6366f1",
+    color: "#FCA5A5",
     href: "/",
   },
-  { name: "入力", icon: Import, color: "#885CF6", href: "/inputpage" },
-  { name: "詳細", icon: ChartArea, color: "#885CF6", href: "/viewpage" },
-  { name: "メモ", icon: Scroll, color: "#885CF6", href: "/memopage" },
-  { name: "設定", icon: Settings, color: "#885CF6", href: "/settingpage" },
+  { name: "入力", icon: Import, color: "#FCD34D", href: "/inputpage" },
+  { name: "詳細", icon: ChartArea, color: "#BEF264", href: "/viewpage" },
+  { name: "メモ", icon: Scroll, color: "#5EEAD4", href: "/memopage" },
+  { name: "設定", icon: Settings, color: "#7DD3FC", href: "/settingpage" },
 ];
 
 const Sidebar = () => {
