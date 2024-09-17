@@ -39,7 +39,7 @@ const Sidebar = () => {
               <motion.div className="flex items-center text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors mb-2">
                 <item.icon
                   size={20}
-                  style={{ color: item.color, minWidth: "20px" }}
+                  style={{ color: item.color, minWidth: "36px" }}
                 />
                 <AnimatePresence>
                   {isSidebarOpen && (
