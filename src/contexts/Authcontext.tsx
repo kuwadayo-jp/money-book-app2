@@ -7,32 +7,39 @@ import {
   signOut,
   User,
 } from "firebase/auth";
+import { Database, getDatabase } from "firebase/database";
 import { ReactNode, useEffect, useState } from "react";
 import { createContext, useContext } from "react";
 
 type contextType = {
-  loginUser: User | null;
-  login: () => Promise<void>;
-  logout: () => Promise<void>;
+  auth: {
+    loginUser: User | null;
+    login: () => Promise<void>;
+    logout: () => Promise<void>;
+  };
+  db: Database;
 };
 
 // Context生成(ログインに関する情報を管理)
 const AuthContext = createContext<contextType | null>(null); //こっからーーーーーーーーーーーーーーーーーーーーー
 // firebase の定義情報（各値はFirebaseのアプリ利用で取得した値を使用する）
 const firebaseConfig = {
-  apiKey: "AIzaSyDcTNA7HXmRXtjKS8vuI_TpHRYl76HEVkI",
-  authDomain: "money-book-app2.firebaseapp.com",
-  projectId: "money-book-app2",
-  storageBucket: "xxxxxxxxxx.appspot.com",
-  messagingSenderId: "67727351746",
-  appId: "1:67727351746:web:f3c581dbbc16d86cac005b",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // firebase, GoogleAuth 初期設定
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-
+const db = getDatabase(
+  app,
+  "https://money-book-app2-default-rtdb.firebaseio.com/"
+);
 // AuthContextProvider (Provider)
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   // ログインユーザ
@@ -62,9 +69,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AuthContext.Provider
       value={{
-        loginUser,
-        login,
-        logout,
+        auth: {
+          loginUser,
+          login,
+          logout,
+        },
+        db: db,
       }}
     >
       {children}

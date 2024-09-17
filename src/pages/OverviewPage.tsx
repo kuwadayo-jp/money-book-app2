@@ -8,7 +8,7 @@ import yenSignImage from "../components/imagesForComponents/yen-illust.jpg";
 const OverviewPage = () => {
   const context = AuthContextConsumer();
   let text = "loginしてください";
-  const dn = context.loginUser?.displayName;
+  const dn = context.auth.loginUser?.displayName;
   if (typeof dn === "string") {
     text = dn;
   }
