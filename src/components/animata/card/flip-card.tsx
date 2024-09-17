@@ -61,7 +61,7 @@ export default function FlipCard({
         >
           <div className="flex min-h-full flex-col gap-2">
             <h1 className="text-xl font-bold text-white">{subtitle}</h1>
-            <p className="mt-1 border-t border-t-gray-200 py-4 text-base font-medium leading-normal text-gray-100">
+            <p className="mt-1 border-t border-t-gray-200 py-4 text-3xl font-medium leading-normal text-gray-100">
               {description}{" "}
             </p>
           </div>
