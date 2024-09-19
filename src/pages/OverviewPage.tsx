@@ -1,24 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components/common/Header";
 import { AuthContextConsumer } from "../contexts/Authcontext";
 import FlipCard from "../components/animata/card/flip-card";
 import goalImage from "../components/imagesForComponents/goal-illust.jpg";
 import yenSignImage from "../components/imagesForComponents/yen-illust.jpg";
+import { onValue, push, ref, update } from "firebase/database";
 
 const OverviewPage = () => {
   const context = AuthContextConsumer();
-  let text = "loginしてください";
-  const dn = context.auth.loginUser?.displayName;
-  if (typeof dn === "string") {
-    text = dn;
-  }
+  const [goaltext, setGoaltext] = useState("loginしてください"); //目標の初期値
+  const goaltextRef = ref(context.db, `${context.auth.loginUser?.uid}/goal`);
+  useEffect(() => {
+    const fetchgoal = () => {
+      onValue(goaltextRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          setGoaltext(data.text);
+        } else {
+          setGoaltext("dataがありません");
+        }
+      });
+    };
+
+    fetchgoal();
+  }, [context.auth]);
+  const updateGoal = (text: string) => {
+    update(goaltextRef, { text });
+  };
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title="ホーム" />
       <div className="flex justify-left p-4 space-x-8">
         <div>
           <FlipCard
-            description="2024年中に￥200,000貯める"
+            description={goaltext}
             image={goalImage}
             rotate="y"
             subtitle="目標"
@@ -35,7 +50,7 @@ const OverviewPage = () => {
           />
         </div>
       </div>
-      <p>{text}</p>
+      <button onClick={() => updateGoal("文字")}>button</button>
     </div>
   );
 };

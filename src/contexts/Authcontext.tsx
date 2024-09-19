@@ -36,10 +36,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-const db = getDatabase(
-  app,
-  "https://money-book-app2-default-rtdb.firebaseio.com/"
-);
+const db = getDatabase(app);
 // AuthContextProvider (Provider)
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   // ログインユーザ
