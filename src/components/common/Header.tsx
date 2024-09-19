@@ -8,7 +8,7 @@ export const Header = ({ title }: { title: string }) => {
       <div className="flex justify-between items-center max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
         <h1 className=" text-2xl font-semibold text-gray-100">{title}</h1>
         <button
-          onClick={context.login}
+          onClick={context.auth.login}
           className="
             box-border inline-block h-11 transform-gpu
             cursor-pointer touch-manipulation whitespace-nowrap rounded-lg border-b-4 border-solid border-transparent
