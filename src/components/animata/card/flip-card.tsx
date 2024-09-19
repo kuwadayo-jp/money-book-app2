@@ -1,3 +1,4 @@
+import React from "react";
 import { cn } from "../../libs/utils";
 
 interface FlipCardProps extends React.HTMLAttributes<HTMLDivElement> {
