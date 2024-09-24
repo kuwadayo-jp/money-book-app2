@@ -1,4 +1,3 @@
-import React from "react";
 import { AuthContextConsumer } from "../../contexts/Authcontext";
 
 import { useState } from "react";
