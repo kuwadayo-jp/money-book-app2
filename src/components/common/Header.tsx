@@ -81,7 +81,7 @@ export const Header = ({ title }: { title: string }) => {
   const context = AuthContextConsumer();
   const [loginstate, setLoginstate] = useState(false);
   useEffect(() => {
-    let logined = context.auth.loginUser !== null;
+    const logined = context.auth.loginUser !== null;
     setLoginstate(logined);
   }, [context.auth]);
 

@@ -4,7 +4,7 @@ import { AuthContextConsumer } from "../contexts/Authcontext";
 import FlipCard from "../components/animata/card/flip-card";
 import goalImage from "../components/imagesForComponents/goal-illust.jpg";
 import yenSignImage from "../components/imagesForComponents/yen-illust.jpg";
-import { onValue, ref, update } from "firebase/database";
+import { onValue, ref } from "firebase/database";
 
 const OverviewPage = () => {
   const context = AuthContextConsumer();
