@@ -24,9 +24,7 @@ const OverviewPage = () => {
 
     fetchgoal();
   }, [context.auth]);
-  const updateGoal = (text: string) => {
-    update(goaltextRef, { text });
-  };
+
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title="ホーム" />
@@ -50,7 +48,6 @@ const OverviewPage = () => {
           />
         </div>
       </div>
-      <button onClick={() => updateGoal("文字")}>button</button>
     </div>
   );
 };
