@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AuthContextConsumer } from "../../contexts/Authcontext";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -79,11 +79,14 @@ export const Header = ({ title }: { title: string }) => {
 
   let buttontext = "";
   const context = AuthContextConsumer();
-
-  const [logintate, setLoginstate] = useState(false);
+  const [loginstate, setLoginstate] = useState(false);
+  useEffect(() => {
+    let logined = context.auth.loginUser !== null;
+    setLoginstate(logined);
+  }, [context.auth]);
 
   const dn = context.auth.loginUser?.displayName;
-  if (logintate) {
+  if (loginstate) {
     if (typeof dn === "string") {
       buttontext = dn;
     }
